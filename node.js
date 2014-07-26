@@ -6,6 +6,8 @@ function Node(x, y) {
   this.G = 0;
   this.B = 0;
 
+  this.hasGravity = false;
+
   this.drawNode = function() {
     fill(this.R, this.G, this.B);
     ellipse(this.x, this.y, d, d);
@@ -15,5 +17,10 @@ function Node(x, y) {
     this.R = random(255);
     this.G = random(255);
     this.B = random(255);
+    this.drawNode();
+  }
+
+  this.drop = function() {
+    this.hasGravity = true;
   }
 }
