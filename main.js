@@ -22,6 +22,7 @@ function draw() {
   if (h == hMax && l == lMax) {
     translate(0, 0);
     bracket.drawLeaves();
+    if (d == dMax) { noLoop(); }
   }
 
   // bracket.physics();
