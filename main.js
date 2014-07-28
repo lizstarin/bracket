@@ -8,21 +8,20 @@ function setup() {
   strokeWeight(3);
   fill(255, 0, 0);
 
-  bracket = new Bracket(0, 0);
+  bracket = new Bracket(rootX, rootY);
 }
 
 function draw() {
   background(255);
   leaves = [];
 
-  translate(rootX, rootY);
   bracket.drawBracket();
 
   increment();
 
   if (h == hMax && l == lMax) {
+    translate(0, 0);
     bracket.drawLeaves();
-    bracket.normalizeLeaves();
   }
 
   // bracket.physics();

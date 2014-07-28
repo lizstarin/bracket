@@ -14,13 +14,6 @@ function Bracket(x, y) {
     if (d < dMax) { d++; }
   }
 
-  this.normalizeLeaves = function() {
-    leaves.forEach(function(leaf) {
-      leaf.x += rootX;
-      leaf.y += rootY;
-    })
-  }
-
   this.physics = function() {
     for(var i = 0; i < leaves.length; i++) {
       if(leaves[i].hasGravity) {
@@ -32,7 +25,7 @@ function Bracket(x, y) {
   function branch(h, l, node) {
     h *= .4;
 
-    if (h > 30) {
+    if (h > 20) {
       drawFork(node.x, node.y, d, h, l);
 
       node.childUp = new Node(node.x - l, node.y - h);
