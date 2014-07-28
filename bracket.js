@@ -8,17 +8,17 @@ function Bracket(x, y) {
   }
 
   this.drawLeaves = function() {
-    for(var i = 0; i < leaves.length; i++) {
-      leaves[i].drawNode();
-    }
+    leaves.forEach(function(leaf) {
+      leaf.drawNode();
+    })
     if (d < dMax) { d++; }
   }
 
   this.normalizeLeaves = function() {
-    for(var i = 0; i < leaves.length; i++) {
-      leaves[i].x += rootX;
-      leaves[i].y += rootY;
-    }
+    leaves.forEach(function(leaf) {
+      leaf.x += rootX;
+      leaf.y += rootY;
+    })
   }
 
   this.physics = function() {

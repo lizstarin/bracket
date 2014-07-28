@@ -1,8 +1,8 @@
 function mousePressed() {
-  for (var i = 0; i < leaves.length; i++) {
+  leaves.forEach(function() {
     var r = d / 2
-    if (mouseX < leaves[i].x + r && mouseX > leaves[i].x - r && mouseY < leaves[i].y + r && mouseY > leaves[i].y - r) {
-      leaves[i].drop();
+    if (mouseX < leaf.x + r && mouseX > leaf.x - r && mouseY < leaf.y + r && mouseY > leaf.y - r) {
+      leaf.drop();
     }
-  }
+  })
 }
