@@ -14,13 +14,6 @@ function Bracket(x, y) {
     if (d < dMax) { d++; }
   }
 
-  this.normalizeLeaves = function() {
-    leaves.forEach(function(leaf) {
-      leaf.x += rootX;
-      leaf.y += rootY;
-    })
-  }
-
   this.physics = function() {
     for(var i = 0; i < leaves.length; i++) {
       if(leaves[i].hasGravity) {
