@@ -23,4 +23,8 @@ function Node(x, y) {
   this.drop = function() {
     this.hasGravity = true;
   }
+
+  this.isLeaf = function() {
+    return this.childUp || this.childDown ? false : true;
+  }
 }
