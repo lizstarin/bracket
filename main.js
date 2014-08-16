@@ -1,4 +1,4 @@
-var width, height, rootX, rootY, h, hMax, hSpeed, l, lMax, lSpeed, d, dMax, leaves, leafCoords, bracket, bracketIsFinished;
+var width, height, rootX, rootY, h, hMax, hSpeed, l, lMax, lSpeed, d, dMax, leaves, leafCoords, bracket, bracketIsFinished, leavesClicked;
 
 function setup() {
   setVariables();
@@ -15,6 +15,7 @@ function setup() {
 function draw() {
   background(255);
   bracketIsFinished = h == hMax && l == lMax
+  leavesClicked = _.filter(leaves, function(leaf) { return leaf.timeClicked > 0; }).length;
 
   bracket.drawBracket();
   increment();
@@ -40,7 +41,19 @@ function drawLeaves(leaves) {
   leaves.forEach(function(leaf) {
     leaf.drawNode();
     if(leaf.hasGravity) {
-      leaf.y++;
+      var timeSinceClick = Date.now() - leaf.timeClicked;
+      console.log(leaf.position);
+      if(leaf.x > 0 + dMax + (dMax + 5) * leaf.position) {
+        leaf.x = leaf.x - 3;
+      } else {
+        leaf.x = 0 + dMax + (dMax + 5) * leaf.position;
+        leaf.hasGravity = false;
+      }
+      if(leaf.y < height - dMax / 2 - 3) {
+        leaf.y = leaf.y - 6 + timeSinceClick * timeSinceClick * .0001;
+      } else {
+        leaf.y = height - dMax / 2 - 3;
+      }
     }
   })
   if (d < dMax) { d++; }

@@ -6,6 +6,9 @@ function Node(x, y) {
   this.G = 0;
   this.B = 0;
 
+  this.timeClicked = 0;
+  this.position = 0;
+
   this.hasGravity = false;
 
   this.drawNode = function() {
